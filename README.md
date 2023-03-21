@@ -70,6 +70,9 @@ Install the development from Github using remotes:
 ```r
 # install.packages("remotes")
 remotes::install_github("JohnCoene/firebase")
+
+# testing editing fork of package
+remotes::install_github("BilboBaagins/firebase")
 ```
 
 Get the current bleeding edge refactor with webpack 
