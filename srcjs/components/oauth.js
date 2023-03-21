@@ -17,7 +17,7 @@ Shiny.addCustomMessageHandler('fireblaze-set-oauth-provider', (msg) => {
 		oauthProviders[msg.id].setCustomParameters(msg.opts)
 });
 
-Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-popup', (msg,credentials) => {
+Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-popup', (msg) => {
 	const auth = getAuth();
 	signInWithPopup(auth, oauthProviders[msg.id])
 		.then((result) => {
@@ -34,7 +34,7 @@ Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-popup', (msg,credentials)
 		});
 });
 
-Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-redirect', (msg,credentials) => {
+Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-redirect', (msg) => {
 	const auth = getAuth();
 	signInWithRedirect(auth, oauthProviders[msg.id]);
 
