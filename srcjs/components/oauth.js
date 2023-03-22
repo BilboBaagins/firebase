@@ -21,19 +21,17 @@ Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-popup', (msg) => {
 	const auth = getAuth();
 	signInWithPopup(auth, oauthProviders[msg.id])
 		.then((result) => {
-      if(msg.credentials) {
-        
-	const credential = result.credential;
-        const accessToken = credential.accessToken;
-	const idToken = credential.idToken;
+		      if(msg.credentials) {
+
+			const credential = OAuthProvider.credentialFromResult(result);
 	
-	 result.credentials = {
-          idToken: credential.idToken,
-          accessToken: credential.accessToken,
-	  billyTest: 'billy_test'
-        };
-	      
-      }
+			result.credentials = {
+			  idToken: credential.idToken,
+			  accessToken: credential.accessToken,
+			  billyTest: 'billy_test'
+			};
+
+		}
 			setInputValue('signed_up_user', {success: true, response: result}, msg.ns);
 		}).catch((error) => {
 			setInputValue('signed_up_user', {success: false, response: error}, msg.ns);
