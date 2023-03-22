@@ -21,7 +21,7 @@ Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-popup', (msg) => {
 	const auth = getAuth();
 	signInWithPopup(auth, oauthProviders[msg.id])
 		.then((result) => {
-      if(msg,credentials) {
+      if(msg.credentials) {
         const credential = OAuthProvider.credentialFromResult(result);
         result.credentials = {
           idToken: credential.idToken,
@@ -40,7 +40,7 @@ Shiny.addCustomMessageHandler('fireblaze-oauth-sign-in-redirect', (msg) => {
 
 	getRedirectResult()
 		.then((result) => {
-      if(msg,credentials) {
+      if(msg.credentials) {
         const credential = OAuthProvider.credentialFromResult(result);
         result.credentials = {
           idToken: credential.idToken,
